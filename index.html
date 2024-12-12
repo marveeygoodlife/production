@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="This is a ecommerce website that sells jewelry">
+    <meta name="author" content="Marveey Goodlife">
+    <meta http-equiv="X-UA-Compatible" content="safari">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="jewelry ecommerce shop cheap">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" media="All">
+    <title>ETERNA LUXE | JEWELRY SHOP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+        /* Relevant CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .menu-toggler {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+        }
+
+        .menu-wrapper {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+
+        .menu-wrapper.show {
+            display: block;
+        }
+
+        .links-list {
+            list-style-type: none;
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .links-list a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+            margin: 10px 0;
+            transition: color 0.3s;
+        }
+
+        .links-list a:hover {
+            color: #ff5733;
+        }
+
+        .sub-menu {
+            display: none;
+            padding-left: 20px;
+        }
+
+        .sub-menu a {
+            font-size: 18px;
+        }
+
+        .close-menu {
+            background-color: #ff5733;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="mainheader">
+        <button class="menu-toggler">☰</button>
+        <div class="menu-wrapper">
+            <ul class="links-list">
+                <li><a href="/pages/about.html">About</a></li>
+                <li><a href="#order">Order</a></li>
+                <li><a href="#contact-us">Contact</a></li>
+                <li class="has-sub-menu">
+                    <a href="#">Categories</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Rings</a></li>
+                        <li><a href="#">Necklaces</a></li>
+                        <li><a href="#">Bracelets</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Your existing main content here -->
+         <div>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut at earum provident id quos saepe praesentium, obcaecati ipsum alias architecto debitis libero laboriosam repudiandae optio ut impedit exercitationem eaque voluptates.</p>
+         </div>
+    </main>
+
+    <footer>
+        <!-- Your footer content here -->
+         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur impedit architecto ipsam nobis, pariatur accusantium autem sed laudantium corporis cumque similique beatae explicabo exercitationem, totam non libero at itaque officiis!</p>
+    </footer>
+
+    <script>
+        // JavaScript functionality
+        const menuToggler = document.querySelector('.menu-toggler');
+        const menuWrapper = document.querySelector('.menu-wrapper');
+        const linksList = document.querySelector('.links-list');
+        const subMenus = document.querySelectorAll('.has-sub-menu');
+
+        // Toggle menu visibility
+        menuToggler.addEventListener('click', () => {
+            menuWrapper.classList.toggle('show');
+            menuToggler.classList.toggle('close-menu');
+        });
+
+        // Close menu when clicking outside
+        menuWrapper.addEventListener('click', (e) => {
+            if (e.target === menuWrapper) {
+                menuWrapper.classList.remove('show');
+                menuToggler.classList.remove('close-menu');
+            }
+        });
+
+        // Prevent closing when clicking inside the menu
+        linksList.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Toggle submenus on mobile
+        subMenus.forEach((menu) => {
+            menu.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const subMenu = menu.querySelector('.sub-menu');
+                if (subMenu) {
+                    subMenu.style.display = subMenu.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
